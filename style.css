@@ -1,0 +1,31 @@
+:root {
+  --spalva1: rgb(236, 55, 52);
+  --spalva2: rgb(33, 30, 79);
+  --spalva3: rgb(243, 156, 67);
+}
+body {
+  background-color: var(--spalva3);
+}
+.mygtukas01 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--spalva1);
+  background-color: var(--spalva3);
+  border-radius: 8px;
+  height: 40px;
+  width: 120px;
+  font-weight: bold;
+}
+.row {
+  display: flex;
+}
+.pixel {
+  border: 1px solid grey;
+  border-radius: 3px;
+  width: 2vw;
+  height: 2vw;
+}
+.plane {
+  background-color: var(--spalva1);
+}
