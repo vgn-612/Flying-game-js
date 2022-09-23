@@ -274,7 +274,7 @@ function gautiRandom() {
 //f-ja skirta pataikymui i lektuva
 function hitPlane(x, y) {
   if (planeX == x && planeY == y) {
-    alert("PRALAIMETA! \nsurinkta taškų : " + howMuchPoints());
+    alert("Žaidimo pabaiga! \nSurinkta taškų : " + howMuchPoints());
     removeEnemyPosition();
     enemyCreation(levelis);
     points = 0;
