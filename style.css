@@ -4,7 +4,12 @@
   --spalva3: rgb(243, 156, 67);
 }
 body {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
   background-color: var(--spalva3);
+  border: 1px solid grey;
+  border-radius: 8px;
 }
 .ivedamasDydis {
   position: absolute;
@@ -25,7 +30,7 @@ body {
   display: flex;
 }
 .pixel {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   border-radius: 3px;
   width: 2vw;
   height: 2vw;
