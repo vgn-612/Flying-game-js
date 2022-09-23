@@ -6,10 +6,18 @@ let planeY;
 let planeDirection = 0; // nusako lektuvo padeti : 0 - 12val; 1 - 9val; 2 - 3val; 3- 6val;
 const enemyBunch = [];
 let points = 0; // surinkti taskai
+let bulletCount = 0; //soviniu kiekis erdveje
+let bulletX; //sovinio kordinates
+let bulletY;
+let d1; // sovinio direction
+let d2;
 document.getElementById("mygtukas01").addEventListener("click", touchSpace); //paleidimo mygtukas
 
 //lektuvo valdymas
 document.addEventListener("keydown", (event) => {
+  if (event.code == "Space") {
+    shoot(planeDirection);
+  }
   if (event.code == "ArrowUp") {
     eliminatePlane();
     planeDirection = 0;
@@ -307,4 +315,45 @@ function firstTime() {
   document.getElementById("instruction3").remove();
   document.getElementById("ivedamasDydis").remove();
   document.getElementById("ivedamasGreitis").remove();
+}
+
+//f-ja saudymui
+function shoot(a) {
+  console.log(
+    "issauta is x :" +
+      planeX +
+      " y : " +
+      planeY +
+      " trajektorija : " +
+      planeDirection
+  );
+  if (bulletCount == 0) {
+    if (planeDirection == 0) {
+      let pixelID = "pixel" + planeY + "/" + planeX;
+      document.getElementById(pixelID).classList.add("bullet");
+      bulletX = planeX;
+      bulletY = planeY;
+      d1 = 0;
+      d2 = -1;
+      bulletCount = true;
+      bullet();
+    }
+  }
+}
+
+//f-ja soviniams
+function bullet() {
+  let pixelID = "pixel" + bulletY + "/" + bulletX;
+  document.getElementById(pixelID).classList.remove("bullet");
+  bulletY = bulletY + d2;
+  bulletX = bulletX + d1;
+  bulletX < 0 || bulletX > erdvesDydis || bulletY < 0 || bulletY > erdvesDydis
+    ? (bulletCount = false)
+    : null;
+  console.log(bulletCount);
+  if (bulletCount) {
+    let pixelID = "pixel" + bulletY + "/" + bulletX;
+    document.getElementById(pixelID).classList.add("bullet");
+    setTimeout(bullet, 100);
+  }
 }

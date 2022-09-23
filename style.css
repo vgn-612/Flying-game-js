@@ -79,3 +79,6 @@ body {
 .enemy {
   background-color: var(--spalva2);
 }
+.bullet {
+  background-color: white;
+}
