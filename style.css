@@ -38,3 +38,6 @@ body {
 .plane {
   background-color: var(--spalva1);
 }
+.enemy {
+  background-color: var(--spalva2);
+}
