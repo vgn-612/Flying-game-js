@@ -23,6 +23,7 @@ document.addEventListener("keydown", (event) => {
 //f-ja skirta erdvės sūkurimui
 function touchSpace() {
   document.getElementById("mygtukas01").remove();
+  document.getElementById("ivedamasDydis").remove();
   for (i = 0; i < erdvesDydis; i++) {
     let eilute = document.createElement("div");
     eilute.id = "row" + i;
@@ -55,6 +56,18 @@ function planeMoving(x, y) {
   document.getElementById(pixelID).classList.remove("plane");
   planeX = planeX - x;
   planeY = planeY - y;
-  pixelID = "pixel" + planeY + "/" + planeX;
-  document.getElementById(pixelID).classList.add("plane");
+  if (
+    planeX == erdvesDydis ||
+    planeY == erdvesDydis ||
+    planeX == -1 ||
+    planeY == -1
+  ) {
+    planeX = planeX + x;
+    planeY = planeY + y;
+    pixelID = "pixel" + planeY + "/" + planeX;
+    document.getElementById(pixelID).classList.add("plane");
+  } else {
+    pixelID = "pixel" + planeY + "/" + planeX;
+    document.getElementById(pixelID).classList.add("plane");
+  }
 }

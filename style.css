@@ -6,15 +6,19 @@
 body {
   background-color: var(--spalva3);
 }
+.ivedamasDydis {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  border-radius: 8px;
+}
 .mygtukas01 {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 100px;
+  left: 100px;
   color: var(--spalva1);
   background-color: var(--spalva3);
   border-radius: 8px;
-  height: 40px;
-  width: 120px;
   font-weight: bold;
 }
 .row {
