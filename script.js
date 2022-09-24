@@ -289,6 +289,20 @@ function hitPlane(x, y) {
   }
 }
 
+// j-ja skirta pataikymui i priesa
+function hitEnemy(x, y) {
+  for (i = 0; i < enemyBunch.length; i++) {
+    if (enemyBunch[i].x == x && enemyBunch[i].y == y) {
+      console.log(enemyBunch.length + "/" + i);
+      let pixelID = "pixel" + enemyBunch[i].y + "/" + enemyBunch[i].x;
+      document.getElementById(pixelID).classList.remove("enemy"); //pasalinam mechaniniu budu
+      enemyBunch.splice(i, i + 1); //pasalinam is duomenu bazes
+      console.log(enemyBunch.length);
+    }
+    nextLevel();
+  }
+}
+
 //f-ja surinktu tasku skaiciavimui
 function howMuchPoints(a) {
   a ? (points = points + 1) : null;
@@ -319,14 +333,6 @@ function firstTime() {
 
 //f-ja saudymui
 function shoot(a) {
-  console.log(
-    "issauta is x :" +
-      planeX +
-      " y : " +
-      planeY +
-      " trajektorija : " +
-      planeDirection
-  );
   if (bulletCount == 0) {
     if (planeDirection == 0) {
       let pixelID = "pixel" + planeY + "/" + planeX;
@@ -335,6 +341,36 @@ function shoot(a) {
       bulletY = planeY;
       d1 = 0;
       d2 = -1;
+      bulletCount = true;
+      bullet();
+    }
+    if (planeDirection == 1) {
+      let pixelID = "pixel" + planeY + "/" + planeX;
+      document.getElementById(pixelID).classList.add("bullet");
+      bulletX = planeX;
+      bulletY = planeY;
+      d1 = -1;
+      d2 = 0;
+      bulletCount = true;
+      bullet();
+    }
+    if (planeDirection == 2) {
+      let pixelID = "pixel" + planeY + "/" + planeX;
+      document.getElementById(pixelID).classList.add("bullet");
+      bulletX = planeX;
+      bulletY = planeY;
+      d1 = +1;
+      d2 = 0;
+      bulletCount = true;
+      bullet();
+    }
+    if (planeDirection == 3) {
+      let pixelID = "pixel" + planeY + "/" + planeX;
+      document.getElementById(pixelID).classList.add("bullet");
+      bulletX = planeX;
+      bulletY = planeY;
+      d1 = 0;
+      d2 = +1;
       bulletCount = true;
       bullet();
     }
@@ -347,13 +383,25 @@ function bullet() {
   document.getElementById(pixelID).classList.remove("bullet");
   bulletY = bulletY + d2;
   bulletX = bulletX + d1;
-  bulletX < 0 || bulletX > erdvesDydis || bulletY < 0 || bulletY > erdvesDydis
+  bulletX < 0 ||
+  bulletX > erdvesDydis - 1 ||
+  bulletY < 0 ||
+  bulletY > erdvesDydis - 1
     ? (bulletCount = false)
     : null;
-  console.log(bulletCount);
   if (bulletCount) {
+    hitEnemy(bulletX, bulletY);
     let pixelID = "pixel" + bulletY + "/" + bulletX;
     document.getElementById(pixelID).classList.add("bullet");
-    setTimeout(bullet, 100);
+    setTimeout(bullet, priesoJudejimoGreitis / 10);
+  }
+}
+
+//f-ja skirta perreiti i kita leveli
+function nextLevel() {
+  if (enemyBunch.length == 0) {
+    levelis++;
+    console.log("kitas levelis : " + levelis);
+    enemyCreation(levelis);
   }
 }
