@@ -296,7 +296,7 @@ function hitEnemy(x, y) {
       console.log(enemyBunch.length + "/" + i);
       let pixelID = "pixel" + enemyBunch[i].y + "/" + enemyBunch[i].x;
       document.getElementById(pixelID).classList.remove("enemy"); //pasalinam mechaniniu budu
-      enemyBunch.splice(i, i + 1); //pasalinam is duomenu bazes
+      enemyBunch.splice(i, 1); //pasalinam is duomenu bazes
       console.log(enemyBunch.length);
     }
     nextLevel();
