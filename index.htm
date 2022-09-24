@@ -12,11 +12,22 @@
     <link rel="stylesheet" href="style.css" />
     <title>Flying game</title>
     <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <p id="instruction1">Įveskite erdvės dydį</p>
-    <p id="instruction2">Levelis (priešų sk.)</p>
-    <p id="instruction3">Greitis 1-10 (maž. yra greičiau)</p>
+    <div id="infoBar" class="infoBarHide">
+      <div id="showLevelis" class="showLevelis"></div>
+      <div id="points" class="points"></div>
+    </div>
+    <p id="instruction1">Erdvės dydis pikseliais</p>
+    <p id="instruction2">Level'is (priešų sk.)</p>
+    <p id="instruction3">Greitis : 1-10 (maž. yra greičiau)</p>
     <input id="ivedamasDydis" type="number" placeholder="dydis" />
     <input id="ivedamasLevel" type="number" placeholder="level" />
     <input id="ivedamasGreitis" type="number" placeholder="greitis" />

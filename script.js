@@ -271,6 +271,7 @@ function movingEnemy() {
   }
   drawEnemyPosition();
   howMuchPoints(1);
+  document.getElementById("points").innerText = "Points : " + points; // tasku sekimui info bare
   setTimeout(movingEnemy, priesoJudejimoGreitis);
 }
 
@@ -293,11 +294,9 @@ function hitPlane(x, y) {
 function hitEnemy(x, y) {
   for (i = 0; i < enemyBunch.length; i++) {
     if (enemyBunch[i].x == x && enemyBunch[i].y == y) {
-      console.log(enemyBunch.length + "/" + i);
       let pixelID = "pixel" + enemyBunch[i].y + "/" + enemyBunch[i].x;
       document.getElementById(pixelID).classList.remove("enemy"); //pasalinam mechaniniu budu
       enemyBunch.splice(i, 1); //pasalinam is duomenu bazes
-      console.log(enemyBunch.length);
     }
     nextLevel();
   }
@@ -305,8 +304,10 @@ function hitEnemy(x, y) {
 
 //f-ja surinktu tasku skaiciavimui
 function howMuchPoints(a) {
-  a ? (points = points + 1) : null;
-  return parseInt(points * levelis * (250 / priesoJudejimoGreitis));
+  a
+    ? (points = points + parseInt(1 * levelis * (1000 / priesoJudejimoGreitis)))
+    : null;
+  return points;
 }
 
 //f-ja pirmam paleidimui
@@ -329,6 +330,8 @@ function firstTime() {
   document.getElementById("instruction3").remove();
   document.getElementById("ivedamasDydis").remove();
   document.getElementById("ivedamasGreitis").remove();
+  document.getElementById("infoBar").className = "infoBarShow";
+  document.getElementById("showLevelis").innerText = "Level : " + levelis;
 }
 
 //f-ja saudymui
@@ -401,7 +404,7 @@ function bullet() {
 function nextLevel() {
   if (enemyBunch.length == 0) {
     levelis++;
-    console.log("kitas levelis : " + levelis);
     enemyCreation(levelis);
+    document.getElementById("showLevelis").innerText = "Level : " + levelis;
   }
 }

@@ -11,7 +11,21 @@ input[type="number"] {
   --spalva2: rgb(33, 30, 79);
   --spalva3: rgb(243, 156, 67);
 }
+.infoBarHide {
+  display: none;
+}
+.infoBarShow {
+  display: flex;
+  margin-left: 12px;
+  margin-right: 12px;
+  justify-content: flex-start;
+  border-bottom: 1px solid grey;
+}
+.showLevelis {
+  margin-right: 12px;
+}
 body {
+  font-family: "Space Mono", monospace;
   display: flex;
   flex-direction: column;
   width: fit-content;
